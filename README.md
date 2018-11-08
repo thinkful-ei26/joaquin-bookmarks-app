@@ -60,4 +60,7 @@ New Work Flow: Work through shopping in sequence, starting at shoppingList.js, a
 1. inside the shoppingList IIFE, a generateError function is declared. 
 
 New work Flow: Work of Nikki's prior repos, build up from there.
-1. Start in Index.js, make this your main rendering module, work on generating html, first text strings, then forms. 
+1. Start in Index.js, make this your main rendering module, work on generating html, first text strings, then forms.
+    a. accomplished through
+New work flow, from the top, reorganize html.
+ 

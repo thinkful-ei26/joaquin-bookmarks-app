@@ -133,22 +133,32 @@ const detail_delete_form_view = `
               </ul>
               </section>
           </form>`;
+
+//put an event listener on the add button to pull in the add form view.
+
+
 //this passes a default form to the DOM.
 $('#js-bookmark-list-form').html(default_filtered_form_view);
+$('#js-bookmark-list-form').on('click', '.js-add-item', event => {
+  console.log('listener should load add view', add_form_view);
+});
+
+
 //i'm going to try nesting my forViewSelect inside a formRender function as i did above for strings.
-//this defines formViewSelect which, starting frpom the default view, puts listeners on the 'add' and 'filter' buttons, then based on which one is clicked, renders the appropriate form to #js-bookmark-list-form.
+//this defines formViewSelect which, starting from the default view, puts listeners on the 'add' and 'filter' buttons, then based on which one is clicked, renders the appropriate form to #js-bookmark-list-form.
+
 function renderForms() {
-  const bookmarkFormSelect = formViewSelect(formView);
+  const bookmarkFormSelect = formViewSelect();
   $('#js-bookmark-list-form').html(bookmarkFormSelect);
+  console.log('renderForms ran');
 }
+//put listeners on buttons.
 
-function formViewSelect(formView) {}
-
-
-
-
-
-
+function formViewSelect() {
+  $('#js-bookmark-list-form').on('click', '.js-add-item', event => {
+    console.log('formViewSelect ran with', add_form_view);
+  });
+}
 
 //up to this point, I have mapped through the store array and returned an <li> for each element
 function handleNewItemSubmit() {
