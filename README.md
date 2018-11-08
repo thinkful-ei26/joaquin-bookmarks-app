@@ -57,3 +57,7 @@ Work flow: Define a step, what I want to achieve, how that same thing was achiev
      =>handleNewItemSubmit in Bookmarks, captures an input value. I just want to bring up a form.Does shopping do that anywhere?
 
 New Work Flow: Work through shopping in sequence, starting at shoppingList.js, adapt, borrow, imitate and steal.
+1. inside the shoppingList IIFE, a generateError function is declared. 
+
+New work Flow: Work of Nikki's prior repos, build up from there.
+1. Start in Index.js, make this your main rendering module, work on generating html, first text strings, then forms. 

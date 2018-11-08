@@ -38,10 +38,9 @@ function renderShoppingList() {
   //2. Join together the individual item strings into one long string
   //3. Insert this long string inside the ul in the DOM
   const shoppingListItemsString = generateShoppingItemsString(storeItems);
-console.log('Index.js is linked');
   // insert that HTML into the DOM
-  $('.testdiv').html(shoppingListItemsString);
-  console.log('renderShoppingList ran');
+  $('.bookmark-list').html(shoppingListItemsString);
+  // test Index.js linkage // console.log('renderShoppingList ran');
 }
 
 function generateShoppingItemsString(storeItems) {
@@ -55,8 +54,6 @@ function generateShoppingItemsString(storeItems) {
   //we want join the individual items string into one big one to
   //be retruned within this function
 
-  console.log('Generating shopping list element');
-
   const items = storeItems.map((item, index) =>
     generateItemElement(item, index)
   );
@@ -68,10 +65,9 @@ function generateItemElement(item, index, template) {
   //returns a single <li> element that gets sent into generateShoppingItemsString
   //this just display the item name
 
-  return `
-<li>${item.name}</li>`;
+  return `<li>Title: ${item.title} Rating:${item.rating} Description:${item.description} </li>`;
 }
-
+//up to this point, I have mapped through the store array and returned an <li> for each element
 function handleNewItemSubmit() {
   //will be responsibile for users adding new items
   console.log('handleNewItemSubmit ran');
