@@ -44,9 +44,6 @@ Process
       3. edit 
       4. not the cuid thing, instead you will have API generated id's...that is modelled in the thinktube app
 
-
-
-
 2. Think about the modules you need and what goes in each.
       a. API
       b. Store
