@@ -90,21 +90,47 @@ function generateItemElement(item, index, template) {
 }
 //**********************************RENDER FORMS*************************************************** */
 //Besides rendering items in our store, I need to render one of three form/states, starting with a default view.
+//cont three form views
+const default_filtered_form_view = `
+        <form id="bookmark-condensed"class=" js-bookmark-condensed">  
+          <section class="add-filter-buttons js-add-filter-buttons">
+            <button class="js-add-item" type="submit">Add item</button>
+            <button class="js-add-filter" type="submit">Filter</button>
+          </section>
+        </form> `;
+const add_form_view = `
+        <form id="bookmark-add-form"class="js-bookmark-add-form">  
+            <section class="addView js-addView">
+                <input type="text" name="bookmark-entry" class="js-bookmark-title" placeholder="The Adventures of TinTin">
+                <input type="text" name="bookmark-entry" class="js-bookmark-url" placeholder="http://myfavbooks.com">
+                <input type="text" name="bookmark-entry" class="js-bookmark-description" placeholder="Description">
+                <ul>
+                  <li><button type="radio">1 Star</button></li>
+                  <li><button type="radio">2 Star</button></li>
+                  <li><button type="radio">3 Star</button></li>
+                  <li><button type="radio">4 Star</button></li>
+                  <li><button type="radio">5 Star</button></li>
+                </ul>
+              <button type="submit">Add item</button>
+            </section>
+          </form> `;
+const detail_delete_form_view = `
+          <form id="bookmark-expanded"class="js-bookmark-expanded">  
+              <section class="bookmark-detail-delete js-bookmark-detail-delete">
+                <button type="submit">Add item</button>
+                <button type="submit">Filter</button>
+              <ul> 
+                  <li>
+                      <div class='bookmark-title'>"Tweaked"</div>
+                      <div class="bookmark-description-expanded">quip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
+                      <div class="bookmark-rating">* * * * *</div>
+                      <button role="button"><a href="">Visit website</a></button>
+                  </li>
+              </ul>
+              </section>
+          </form>`;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$('#js-bookmark-list-form').html();
 
 //up to this point, I have mapped through the store array and returned an <li> for each element
 function handleNewItemSubmit() {
