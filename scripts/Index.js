@@ -22,6 +22,17 @@ const storeItems = [
     title: 'My Second Favorite Book',
     rating: 3,
     description: 'More Lerem ipsum...'
+  },
+  {
+    title: 'Tweaked',
+    rating: 5,
+    description:
+      'hjfdk  kadj ka akd akjdkjf kadjkj ieooap a  appoa a dda ap a a'
+  },
+  {
+    title: 'Sapiens: A Brief History of Mankind',
+    rating: 5,
+    description: ' dkf ad kajk kakdjkaj kajka kadj ao aojao aoao feiie0a[ a'
   }
 ];
 
@@ -38,9 +49,8 @@ function renderShoppingList() {
   //2. Join together the individual item strings into one long string
   //3. Insert this long string inside the ul in the DOM
   const shoppingListItemsString = generateShoppingItemsString(storeItems);
-  // insert that HTML into the DOM
+  // insert the current booklist with  HTML, into the DOM
   $('.bookmark-list').html(shoppingListItemsString);
-  // test Index.js linkage // console.log('renderShoppingList ran');
 }
 
 function generateShoppingItemsString(storeItems) {
@@ -65,8 +75,19 @@ function generateItemElement(item, index, template) {
   //returns a single <li> element that gets sent into generateShoppingItemsString
   //this just display the item name
 
-  return `<li>Title: ${item.title} Rating:${item.rating} Description:${item.description} </li>`;
+  //   return `<li>Title: ${item.title} Rating:${item.rating} Description:${
+  //     item.description
+  //   } </li>`;
+  return ` <li>
+                <div class='bookmark-title'>Title: ${item.title}</div>
+                <div class="bookmark-description-expanded">Description: ${
+                  item.description
+                }</div>
+                <div class="bookmark-rating">Rating: ${item.rating}</div>
+                <button role="button"><a href="">Visit website</a></button>
+          </li>`;
 }
+
 //up to this point, I have mapped through the store array and returned an <li> for each element
 function handleNewItemSubmit() {
   //will be responsibile for users adding new items
