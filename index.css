@@ -68,9 +68,16 @@ padding: 5%;
 }
 
  .bookmark-description {
+    visibility: visible;
+}
+
+#bookmark-condensed {
+    visibility: visible;
+}
+#bookmark-expanded {
     visibility: collapse;
 }
 
-.bookmark-detail-delete .bookmark-description {
-    visibility: visible;
+#bookmark-add-form {
+    visibility: collapse;
 }
