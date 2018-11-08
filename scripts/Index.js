@@ -90,7 +90,11 @@ function generateItemElement(item, index, template) {
 }
 //**********************************RENDER FORMS*************************************************** */
 //Besides rendering items in our store, I need to render one of three form/states, starting with a default view.
-//cont three form views
+//const three form views then create some sort of handler to call on the appropriate one...what does that look like?
+//there will allways be a default view so i can start with a listener on the add and filter buttons. the listener then call a formViewSelect function that passes in the right form, and then passes that on to the DOM.
+
+//these are the three form states.
+let formView;
 const default_filtered_form_view = `
         <form id="bookmark-condensed"class=" js-bookmark-condensed">  
           <section class="add-filter-buttons js-add-filter-buttons">
@@ -129,8 +133,22 @@ const detail_delete_form_view = `
               </ul>
               </section>
           </form>`;
+//this passes a default form to the DOM.
+$('#js-bookmark-list-form').html(default_filtered_form_view);
+//i'm going to try nesting my forViewSelect inside a formRender function as i did above for strings.
+//this defines formViewSelect which, starting frpom the default view, puts listeners on the 'add' and 'filter' buttons, then based on which one is clicked, renders the appropriate form to #js-bookmark-list-form.
+function renderForms() {
+  const bookmarkFormSelect = formViewSelect(formView);
+  $('#js-bookmark-list-form').html(bookmarkFormSelect);
+}
 
-$('#js-bookmark-list-form').html();
+function formViewSelect(formView) {}
+
+
+
+
+
+
 
 //up to this point, I have mapped through the store array and returned an <li> for each element
 function handleNewItemSubmit() {
