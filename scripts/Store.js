@@ -2,7 +2,7 @@
 /*eslint-env jquery*/
 const store = (function() {
   const setError = function(error) {
-    this.error = error;
+    this.error = error; //Is this right? assigns error object to bookmark?
     console.log('setError',store);
   };
 
@@ -36,14 +36,14 @@ const store = (function() {
   };
 
   const toggleAddBookmark = function(){
-
+    store.addIt = !store.addIt; //defaults false to all new bookmarks.
   };
 
 
   return {
     bookmarks: [],
     error: null,
-    filter: null,
+    filter: null, //assume no filter 
     addIt: false,
     addItem,
     findAndDelete,

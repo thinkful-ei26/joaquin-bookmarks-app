@@ -1,20 +1,21 @@
 'use strict';
 /*global store, api, $ */
 const bookmarkList = (function() {
+  //a listener on my add button
   const handleAddBookmark = function() {
     $('js-add-bookmark-view').click(event => {
-      store.toggleAddBookmark();
-      $('form').toggle();
-      store.setError(null);
-      renderAddBookmarkForm();
+      store.toggleAddBookmark(); //toggles default 
+      $('form').toggle(); //toggle the 'hidden' boolean
+      store.setError(null); //review this.
+      renderAddBookmarkForm(); //
     });
   };
 
   const renderAddBookmarkForm = function(){
-    if(store.adding){
-      $('.js-adding-new-bookmark-form').html(generateAddBookmarkForm());
+    if(store.addIt){ //if item property  addIt is true call generate function and put html to hidden form element.
+      $('.js-bookmark-list-form').html(generateAddBookmarkForm());
     } else{
-      $('.js-adding-new-bookmark-form').html('');
+      $('.js-bookmark-list-form').html('');
     }
   };
 
@@ -35,6 +36,8 @@ const bookmarkList = (function() {
           </section>
         </form> `;
   };
+
+  //I want two functions to build a booklist 
 
   const bindEventListeners = function() {
     handleAddBookmark();
