@@ -1,9 +1,10 @@
 'use strict';
 /*eslint-env jquery*/
 const store = (function() {
+  const error = null;
   const setError = function(error) {
     this.error = error; //Is this right? assigns error object to bookmark?
-    console.log('setError',store);
+    // console.log('setError',store);
   };
 
   const addItem = function(bookmark) {
@@ -42,7 +43,7 @@ const store = (function() {
 
   return {
     bookmarks: [],
-    error: null,
+    error,
     filter: null, //assume no filter 
     addIt: false,
     addItem,
