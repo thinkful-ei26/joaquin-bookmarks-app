@@ -33,7 +33,7 @@ const store = {
       rating: 4
     }
   ],
-  adding: false //additional parameter applied to all elements as default
+  adding: false //additional parameter applied to overal bookmarks object element as default, used for toggling.
 };
 
 //*****************CONVERT AN OBJECT INTO AN HTML ELEMENT, AND PUT IT TO THE DOM (REACTful) */
@@ -66,7 +66,7 @@ $('.bookmark-list').html(bookmarkList);
 // I build out html directly in DOM, and toggle render with jquery
 //this is html that will display if 'adding' property is true.
 
-const FORM_ADD_NEW_BOOKMARK = '.bookmark-add-form';
+const FORM_ADD_NEW_BOOKMARK = '#bookmark-add-form';
 
 //*************DEFINE A FUNCTION TO RENDER THE ADD FORM ON CONDITION ADDING */
 function render() {
@@ -76,9 +76,23 @@ function render() {
     $(FORM_ADD_NEW_BOOKMARK).hide();
   }
 }
+//CREATE A TOGGLE METHOD TO RENDER THE ADD FORM
+//for this you need a button and a listener on the button
+// console.log(store.adding);
+$('#toggle-add-form').click(event => {
+  event.preventDefault();
+  store.adding = !store.adding;
+  console.log(store);
+  render();
+});
+// console.log(store.adding);
+//****CREATE A METHOD TO CAPTURE THE INPUT VALUES AND PUSH THEM TO THE STORE* */
+//need to capture input field values, make them into an object, and push the object to the store.
 
+const title =$
+const description
 
-//**ON PAGE LOAD RUN RENDER */
+//***ON PAGE LOAD RUN RENDER** */
 $(() => {
   render();
 });
