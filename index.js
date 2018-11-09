@@ -86,17 +86,25 @@ $('#toggle-add-form').click(event => {
 //****CREATE A METHOD TO CAPTURE THE INPUT VALUES AND PUSH THEM TO THE STORE* */
 //need to capture input field values, make them into an object, and push the object to the store.
 //put a listener on an add button and capture field values in const's
+//Push these directly to store.
+// Generate a dummy id for each new item
 
 $('#capture-form-values').click(event => {
   event.preventDefault();
   const title = $('#title').val();
-  //   console.log(title);
   const url = $('#url').val();
-  //   console.log(url);
-  const desc = $('#desc').text();
-  console.log(desc);
+  const desc = $('#description').val();
   const rating = $('#rating').val();
-  console.log(rating);
+  store.bookmarks.push({
+    id: Math.floor(Math.random()*100), //I create a dummy id here
+    title,
+    url,
+    desc,
+    rating,
+
+  });
+  render();
+  console.log(store);
 });
 
 //***ON PAGE LOAD RUN RENDER** */
