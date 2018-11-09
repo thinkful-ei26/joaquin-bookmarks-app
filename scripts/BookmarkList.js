@@ -37,7 +37,16 @@ const bookmarkList = (function() {
         </form> `;
   };
 
-  //I want two functions to build a booklist 
+  const render = function(){
+    let bookmarks = [...store.bookmarks]; //local copy not exposed.
+
+    if(store.filter){
+      bookmarks = bookmarks.filter(bookmark =>bookmark.rating >= store.filter);
+    }
+    
+
+  }
+   
 
   const bindEventListeners = function() {
     handleAddBookmark();
@@ -47,4 +56,4 @@ const bookmarkList = (function() {
     bindEventListeners,
     render
   };
-})();
+}());
