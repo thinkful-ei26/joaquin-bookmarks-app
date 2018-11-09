@@ -1,18 +1,8 @@
 'use strict';
 /*eslint-env jquery*/
-/* Start with...*/
-//Bookmark forms need to get rendered to the page
-//Bookmark needs to be able to add items
-//Bookmark needs to be able to delete items
+//on page load, 
+$(document).ready(function(){})
 
-//storeItems is responsible for storing the underlying data
-//that our app will need to keep track of in order to work
-
-//we have an array of  list items, each one is an object
-
-//we're pre-adding items to the shopping list so there's
-//something to see when it loads
-//************************FIRST STORE******************************************************* */
 const storeItems = [
   {
     title: 'My Favorite Book',

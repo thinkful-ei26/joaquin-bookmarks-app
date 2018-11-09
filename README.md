@@ -53,14 +53,10 @@ Process
 Work flow: Define a step, what I want to achieve, how that same thing was achieved in the shopping app, and replicate it. Have two separate code windows open, one with booknote one with shopping, for cross reference.
 
 1. Render the default page. => render index.html with default display.
-2. When user clicks 'add' button, show the add form.
-     =>handleNewItemSubmit in Bookmarks, captures an input value. I just want to bring up a form.Does shopping do that anywhere?
-
-New Work Flow: Work through shopping in sequence, starting at shoppingList.js, adapt, borrow, imitate and steal.
-1. inside the shoppingList IIFE, a generateError function is declared. 
-
-New work Flow: Work of Nikki's prior repos, build up from there.
-1. Start in Index.js, make this your main rendering module, work on generating html, first text strings, then forms.
-    a. accomplished through
-New work flow, from the top, reorganize html.
- 
+2. Define the store object and module. The store is a big machine that holds all of our bookmark data properties and all the methods that will be called on to manipulate the properties. Starting with
+    a. title
+    b. description
+    c. rating
+    d. an error method for invalid user inputs
+    e. a hide condition
+Wrap the store (and everything really) in an IIFE so that it and all it's methods render on page load, and repeatedly when the page is re-rendered for any user-events.
