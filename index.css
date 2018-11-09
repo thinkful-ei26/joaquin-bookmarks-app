@@ -6,23 +6,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-button, input[type="text"] {
-  padding: 5px;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-button:hover:disabled {
-  cursor: default;
-}
-
-.hidden {
-  display: none;
-}
-
-
 .container {
   max-width: 600px;
   margin: 0 auto;
@@ -33,51 +16,4 @@ li {
 }
 
 
-
-.add-filter-buttons {
-    display: inline-block;
-    width: 100%;
-    border: 1px solid grey;
-}
-.addView {
-    display: inline-block;
-    width: 100%;
-    border: 1px solid grey;
-}
-
-.add-filter-buttons button {
-    margin: 4%;
-    padding: 5%;
-    width: 15rem;
-}
-
-.bookmark-condensed  {
-    list-style: none;
-    border: 1px solid black;
-    margin: 2%;
-    padding: 2%;
-}
-
-.bookmark-display {
-    border: 1px solid black;
-    padding: 1%;
-}
-
-.bookmark-display div {
-padding: 5%;
-}
-
- .bookmark-description {
-    visibility: visible;
-}
-
-#bookmark-condensed {
-    visibility: visible;
-}
-#bookmark-expanded {
-    visibility: collapse;
-}
-
-#bookmark-add-form {
-    visibility: collapse;
-}
+ 

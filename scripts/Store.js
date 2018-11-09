@@ -3,6 +3,7 @@
 const store = (function() {
   const setError = function(error) {
     this.error = error;
+    console.log('setError',store);
   };
 
   const addItem = function(bookmark) {
@@ -22,6 +23,23 @@ const store = (function() {
     Object.assign(bookmark, newData);
   };
 
+  const setFilterRating = function(filterRating) {
+    this.filter = filterRating;
+  };
+
+  const toggleExpandBookmark = function(){
+
+  };
+
+  const toggleEditBookmark = function(){
+
+  };
+
+  const toggleAddBookmark = function(){
+
+  };
+
+
   return {
     bookmarks: [],
     error: null,
@@ -29,11 +47,12 @@ const store = (function() {
     addIt: false,
     addItem,
     findAndDelete,
-    findAndUpdate,toggleExpandedForBookmark,
-    // setError,
-    // setFilterRating,
-    // toggleEditedForBookmark,
-    findById
-    // toggleAddingABookmark
+    findAndUpdate,
+    setError,
+    setFilterRating,
+    findById,
+    toggleExpandBookmark,
+    toggleEditBookmark,
+    toggleAddBookmark
   };
 })();
