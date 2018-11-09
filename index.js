@@ -13,21 +13,21 @@ const store = {
   bookmarks: [
     {
       id: 1,
-      title: 'youtube',
+      title: 'YouTube',
       url: 'https://youtube.com',
       description: 'video hosting, media and entertainment',
       rating: 3
     },
     {
       id: 2,
-      title: 'harkins',
-      url: 'https://harkins.com',
-      description: 'this is a site about',
+      title: 'Floppers',
+      url: 'https://floppers.com',
+      description: 'this is a site about....',
       rating: 2
     },
     {
       id: 3,
-      title: 'wikipedia',
+      title: 'Wikipedia',
       url: 'https://wikipedia.org',
       description: 'the best of open-source',
       rating: 4
@@ -41,7 +41,7 @@ const store = {
 function generateBookmarkListItem(bookmark) {
   return `
     <li data-bookmark-id="${bookmark.id}">
-        Title: ${bookmark.title} 
+        : ${bookmark.title} 
         Description: ${bookmark.description}
        <a href="${bookmark.url}">Visit site </a> 
     </li>
@@ -77,20 +77,27 @@ function render() {
   }
 }
 //CREATE A TOGGLE METHOD TO RENDER THE ADD FORM
-//for this you need a button and a listener on the button
-// console.log(store.adding);
+
 $('#toggle-add-form').click(event => {
   event.preventDefault();
   store.adding = !store.adding;
-  console.log(store);
-  render();
+  render(); //without this, there is nothing to call this event after an initial page load.
 });
-// console.log(store.adding);
 //****CREATE A METHOD TO CAPTURE THE INPUT VALUES AND PUSH THEM TO THE STORE* */
 //need to capture input field values, make them into an object, and push the object to the store.
+//put a listener on an add button and capture field values in const's
 
-const title =$
-const description
+$('#capture-form-values').click(event => {
+  event.preventDefault();
+  const title = $('#title').val();
+  //   console.log(title);
+  const url = $('#url').val();
+  //   console.log(url);
+  const desc = $('#desc').text();
+  console.log(desc);
+  const rating = $('#rating').val();
+  console.log(rating);
+});
 
 //***ON PAGE LOAD RUN RENDER** */
 $(() => {

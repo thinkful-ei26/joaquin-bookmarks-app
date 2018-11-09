@@ -12,30 +12,30 @@
 
 <body>
     <h1>My Bookmarks</h1>
-    <button name="toggle-add-form" id="toggle-add-form" value="true">Add a bookmark</button>
+    <button name="toggle-add-form" id="toggle-add-form" value="true">Make a bookmark</button>
     <form id="bookmark-add-form">
-        <label for="title">Title</label>
-        <input type="text" name="title">
-        
+        <label for="title" id="">Title</label>
+        <input type="text" name="title" id="title">
         <label for="url">url</label>
-        <input type="url" name="url">
-       
+        <input type="url" name="url" id="url">
         <label for="description">Description</label>
-        <input type="text" name="description">
-       <label for="rating">Rate your bookmark</label>
-        <select name="rating" id="">
+        <input type="text" name="description" id="description">
+        <label for="rating">Rate your bookmark</label>
+        <select name="rating" id="rating">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
         </select>
+        <button name="toggle-add-form" id="capture-form-values" value="true">Add your bookmark</button>
     </form>
+    
     <div>
         <ul class="bookmark-list">
-            <li>item</li>
-            <li>item</li>
-            <li>item</li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
     </div>
     <script src="index.js"></script>
