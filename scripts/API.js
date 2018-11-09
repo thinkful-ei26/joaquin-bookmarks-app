@@ -1,16 +1,16 @@
 /*eslint-env jquery*/
 'use strict';
 const api = (function(){
-  const BASE_URL = 'https://thinkful-list-api.herokuapp.com/richie';
+  const BASE_URL = 'https://thinkful-list-api.herokuapp.com/joaquin';
 
-  const getItems = function(callback) {
-    $.getJSON(BASE_URL + '/items', callback);
+  const getBookmarks = function(callback) {
+    $.getJSON(BASE_URL + '/bookmarks', callback);
   };
 
-  const createItem = function(name, onSuccess, onError) {
-    const newItem = JSON.stringify({ name });
+  const createBookmark = function(title, onSuccess, onError) {
+    const newItem = JSON.stringify({ title });
     $.ajax({
-      url: BASE_URL + '/items',
+      url: BASE_URL + '/bookmarks',
       method: 'POST',
       contentType: 'application/json',
       data: newItem,
@@ -19,20 +19,20 @@ const api = (function(){
     });
   };
 
-  const updateItem = function(id, updateData, onSuccess, onError) {
+  const updateBookmark = function(id, updateBookmark, onSuccess, onError) {
     $.ajax({
-      url: BASE_URL + '/items/' + id,
+      url: BASE_URL + '/bookmarks/' + id,
       method: 'PATCH',
       contentType: 'application/json',
-      data: JSON.stringify(updateData),
+      data: JSON.stringify(updateBookmark),
       success: onSuccess,
       error: onError,
     });
   };
 
-  const deleteItem = function(id, onSuccess, onError) {
+  const deleteBookmark = function(id, onSuccess, onError) {
     $.ajax({
-      url: BASE_URL + '/items/' + id,
+      url: BASE_URL + '/bookmarks/' + id,
       method: 'DELETE',
       success: onSuccess,
       error: onError,
@@ -40,9 +40,9 @@ const api = (function(){
   };
 
   return {
-    getItems,
-    createItem,
-    updateItem,
-    deleteItem,
+    getBookmarks,
+    createBookmark,
+    updateBookmark,
+    deleteBookmark,
   };
 }());
