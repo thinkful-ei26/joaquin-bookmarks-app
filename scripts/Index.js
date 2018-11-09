@@ -1,10 +1,10 @@
 'use strict';
-/*global $, bookmarkList, API, Store*/
+/*global $, bookmarkList, api, Store*/
 //on page load,
 $(document).ready(function() {
   bookmarkList.bindEventListeners();
 
-  API.getBookmarks(  //fix undefined here
+  api.getBookmarks(  //fix undefined here
     bookmarks => {
       bookmarks.forEach(bookmark => {
         bookmark.expanded = false;
