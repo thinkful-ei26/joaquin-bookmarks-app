@@ -53,9 +53,10 @@ function generateBookmarkListItem(bookmark) {
 //after generating the li, you need to repeat the action for each element and capture the result.
 
 const bookmarkList = [];
-store.bookmarks.forEach(obj => 
-  bookmarkList.push( generateBookmarkListItem(obj)));
-console.log(bookmarkList);
+store.bookmarks.forEach(obj =>
+  bookmarkList.push(generateBookmarkListItem(obj))
+);
+// console.log(bookmarkList);
 
 //*********PUT THE RESULT TO THE DOM************ */
 
@@ -63,6 +64,21 @@ $('.bookmark-list').html(bookmarkList);
 
 //**************DEFINE A FORM TO ADD NEW BOOKMARKS*********** */
 // I build out html directly in DOM, and toggle render with jquery
-//this is html that will display if 'adding' property is true. 
+//this is html that will display if 'adding' property is true.
 
-const ADD_NEW_BOOKMARK = $()
+const FORM_ADD_NEW_BOOKMARK = '.bookmark-add-form';
+
+//*************DEFINE A FUNCTION TO RENDER THE ADD FORM ON CONDITION ADDING */
+function render() {
+  if (store.adding) {
+    $(FORM_ADD_NEW_BOOKMARK).show();
+  } else {
+    $(FORM_ADD_NEW_BOOKMARK).hide();
+  }
+}
+
+
+//**ON PAGE LOAD RUN RENDER */
+$(() => {
+  render();
+});
