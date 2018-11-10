@@ -41,7 +41,7 @@ const store = {
 function generateBookmarkListItem(bookmark) {
   return `
     <li data-bookmark-id="${bookmark.id}">
-        : ${bookmark.title} 
+         ${bookmark.title} 
         Description: ${bookmark.description}
        <a href="${bookmark.url}">Visit site </a> 
     </li>
@@ -50,7 +50,7 @@ function generateBookmarkListItem(bookmark) {
 // console.log(store.bookmarks);
 // console.log(generateBookmarkListItem(store.bookmarks[0]));
 //*****************PASS EACH ELEMENT OF THE STORE TO OUR generate FUNCTION */
-//after generating the li, you need to repeat the action for each element and capture the result.
+// After generating the <li>, repeat the action for each element and capture the result.
 
 const bookmarkList = [];
 store.bookmarks.forEach(obj =>
@@ -76,18 +76,19 @@ function render() {
     $(FORM_ADD_NEW_BOOKMARK).hide();
   }
 }
-//CREATE A TOGGLE METHOD TO RENDER THE ADD FORM
+//************* CREATE A TOGGLE METHOD TO RENDER THE ADD FORM*************/
 
 $('#toggle-add-form').click(event => {
   event.preventDefault();
   store.adding = !store.adding;
-  render(); //without this, there is nothing to call this event after an initial page load.
+  render(); // Without this, there is nothing to call the toggle event after  initial page load.
 });
 //****CREATE A METHOD TO CAPTURE THE INPUT VALUES AND PUSH THEM TO THE STORE* */
-//need to capture input field values, make them into an object, and push the object to the store.
-//put a listener on an add button and capture field values in const's
-//Push these directly to store.
-// Generate a dummy id for each new item
+// Capture input field values, make them into an object, and push the object to the store.
+// Put a listener on an add button and capture field values in const's.
+// Generate a dummy id for each new item.
+// Push these directly to store.
+
 
 $('#capture-form-values').click(event => {
   event.preventDefault();
@@ -96,16 +97,19 @@ $('#capture-form-values').click(event => {
   const desc = $('#description').val();
   const rating = $('#rating').val();
   store.bookmarks.push({
-    id: Math.floor(Math.random()*100), //I create a dummy id here
+    id: Math.floor(Math.random()*100), //I create a dummy id here.
     title,
     url,
     desc,
     rating,
 
   });
-  render();
-  console.log(store);
+  generateBookmarkListItem(this);
+
 });
+
+
+// I want the page to re-render with the new item in the store.
 
 //***ON PAGE LOAD RUN RENDER** */
 $(() => {
