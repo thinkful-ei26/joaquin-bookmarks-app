@@ -7,7 +7,7 @@
  4 detail view.
  */
 
-//***************************HARD CODE A STORE OBJECT  reresents a list of bookmarks */
+//***************************HARD CODE A STORE OBJECT ********************************* */
 
 const store = {
   bookmarks: [
@@ -36,8 +36,16 @@ const store = {
   adding: false //additional parameter applied to overal bookmarks object element as default, used for toggling.
 };
 
-//*****************CONVERT AN OBJECT INTO AN HTML ELEMENT, AND PUT IT TO THE DOM (REACTful) */
+//*****************PASS EACH ELEMENT OF THE STORE TO OUR GENERATE FUNCTION *****************/
+const bookmarkList = [];
+const generateStoreDom = function() {
+  store.bookmarks.forEach(obj =>
+    bookmarkList.push(generateBookmarkListItem(obj))
+  );
+};
+generateStoreDom();
 
+//*****************CONVERT AN OBJECT INTO AN HTML ELEMENT, AND PUT IT TO THE DOM (REACTful) */
 function generateBookmarkListItem(bookmark) {
   return `
     <li data-bookmark-id="${bookmark.id}">
@@ -47,28 +55,16 @@ function generateBookmarkListItem(bookmark) {
     </li>
     `;
 }
-// console.log(store.bookmarks);
-// console.log(generateBookmarkListItem(store.bookmarks[0]));
-//*****************PASS EACH ELEMENT OF THE STORE TO OUR generate FUNCTION */
-// After generating the <li>, repeat the action for each element and capture the result.
-
-const bookmarkList = [];
-store.bookmarks.forEach(obj =>
-  bookmarkList.push(generateBookmarkListItem(obj))
-);
-// console.log(bookmarkList);
-
-//*********PUT THE RESULT TO THE DOM************ */
-
+//*********PUT THE RESULT TO THE DOM****************************************************** */
 $('.bookmark-list').html(bookmarkList);
 
-//**************DEFINE A FORM TO ADD NEW BOOKMARKS*********** */
-// I build out html directly in DOM, and toggle render with jquery
-//this is html that will display if 'adding' property is true.
+//**************DEFINE A FORM TO ADD NEW BOOKMARKS**************************************** */
+// I build out htmlform directly into the DOM, and toggle render with jquery
+// Below is is html that will display if 'adding' property is true.
 
 const FORM_ADD_NEW_BOOKMARK = '#bookmark-add-form';
 
-//*************DEFINE A FUNCTION TO RENDER THE ADD FORM ON CONDITION ADDING */
+//*************DEFINE A FUNCTION TO RENDER THE ADD FORM ON CONDITION ADDING ****************/
 function render() {
   if (store.adding) {
     $(FORM_ADD_NEW_BOOKMARK).show();
@@ -76,38 +72,42 @@ function render() {
     $(FORM_ADD_NEW_BOOKMARK).hide();
   }
 }
-//************* CREATE A TOGGLE METHOD TO RENDER THE ADD FORM*************/
 
+//************* CREATE A TOGGLE METHOD TO RENDER THE ADD FORM********************************/
 $('#toggle-add-form').click(event => {
   event.preventDefault();
   store.adding = !store.adding;
   render(); // Without this, there is nothing to call the toggle event after  initial page load.
 });
-//****CREATE A METHOD TO CAPTURE THE INPUT VALUES AND PUSH THEM TO THE STORE* */
-// Capture input field values, make them into an object, and push the object to the store.
-// Put a listener on an add button and capture field values in const's.
+
+//****CREATE A METHOD TO CAPTURE THE INPUT VALUES AND PUSH THEM TO THE STORE************ */
+// Put a listener on an add button and capture field values in const's, build into an object, and push the object to the store.
 // Generate a dummy id for each new item.
-// Push these directly to store.
 
-
-$('#capture-form-values').click(event => {
-  event.preventDefault();
-  const title = $('#title').val();
-  const url = $('#url').val();
-  const desc = $('#description').val();
-  const rating = $('#rating').val();
-  store.bookmarks.push({
-    id: Math.floor(Math.random()*100), //I create a dummy id here.
-    title,
-    url,
-    desc,
-    rating,
-
+const captureNewUserInput = function() {
+  $('#capture-form-values').click(event => {
+    event.preventDefault();
+    const title = $('#title').val();
+    const url = $('#url').val();
+    const desc = $('#description').val();
+    const rating = $('#rating').val();
+    const newBookmark = {
+      id: Math.floor(Math.random() * 100), //I create a dummy id here.
+      title,
+      url,
+      desc,
+      rating
+    };
+    // console.log('inside', newBookmark);
+    // console.log(store);
+    store.bookmarks.push(newBookmark);
+    // console.log(store); //at this point the store has the new object and is complete.
+    
   });
-  generateBookmarkListItem(this);
-
-});
-
+  console.log('outside', store);
+};
+console.log('outside captureNewUserInput',store);
+captureNewUserInput();
 
 // I want the page to re-render with the new item in the store.
 
