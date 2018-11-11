@@ -1,6 +1,7 @@
 'use strict';
-/*eslint-env jquery   */
+/* global store, $  */
 
+const FORM_ADD_NEW_BOOKMARK = '#bookmark-add-form';
 
 //*****************PASS EACH ELEMENT OF THE STORE TO OUR GENERATE FUNCTION *****************/
 const bookmarkList = [];
@@ -21,10 +22,10 @@ function generateBookmarkListItem(bookmark) {
     `;
 }
 
-const FORM_ADD_NEW_BOOKMARK = '#bookmark-add-form';
+
 
 //*************DEFINE A FUNCTION TO RENDER THE ADD FORM ON CONDITION ADDING ****************/
-function render() {
+function renderAddBookmarkForm() {
   if (store.adding) {
     $(FORM_ADD_NEW_BOOKMARK).show();
   } else {
@@ -36,7 +37,7 @@ function render() {
 $('#toggle-add-form').click(event => {
   event.preventDefault();
   store.adding = !store.adding;
-  render(); // Without this, there is nothing to call the toggle event after  initial page load.
+  renderAddBookmarkForm(); // Without this, there is nothing to call the toggle event after  initial page load.
 });
 
 //****CAPTURE THE INPUT VALUES AND PUSH THEM TO THE STORE************ */
@@ -60,18 +61,16 @@ const captureNewUserInput = function() {
 
     // generateStoreDom();
     $('.bookmark-list').append(newBookmarkElement);
-    console.log(store); 
   });
 };
 captureNewUserInput();
 generateStoreDom();
 
 $('.bookmark-list').html(bookmarkList);
-render();
-console.log(store);
+renderAddBookmarkForm();
 
 
 //***ON PAGE LOAD RUN RENDER** */
 $(() => {
-  render();
+  renderAddBookmarkForm();
 });

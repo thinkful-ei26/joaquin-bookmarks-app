@@ -40,4 +40,5 @@ Process
     1. User can render add-bookmark-form.
     2. User can add a bookmark to list.
       Before going on, clean it up and try to modularize it a bit. 
-      First, pull the store out into a separate file.  
+      First, pull the store out into a separate file.
+      Organize index.js
