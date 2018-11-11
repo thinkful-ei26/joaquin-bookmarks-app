@@ -1,18 +1,14 @@
 'use strict';
 /* global store, $  */
 
-const FORM_ADD_NEW_BOOKMARK = '#bookmark-add-form';
-
-//*****************PASS EACH ELEMENT OF THE STORE TO OUR GENERATE FUNCTION *****************/
+//*****************RENDER THE STORE *****************/
 const bookmarkList = [];
-const generateStoreDom = function() {
-  store.bookmarks.forEach(obj =>
+const generateStoreString = function() {
+  return store.bookmarks.forEach(obj =>
     bookmarkList.push(generateBookmarkListItem(obj))
   );
 };
-
-//*****************CONVERT AN OBJECT INTO AN HTML ELEMENT, AND PUT IT TO THE DOM (REACTful) */
-function generateBookmarkListItem(bookmark) {
+const generateBookmarkListItem = function(bookmark) {
   return `
     <li data-bookmark-id="${bookmark.id}">
          ${bookmark.title} 
@@ -20,27 +16,30 @@ function generateBookmarkListItem(bookmark) {
        <a href="${bookmark.url}">Visit site </a> 
     </li>
     `;
-}
+};
+const renderStore = function() {
+  $('.bookmark-list').html(bookmarkList);
+};
+generateStoreString();
 
-
-
-//*************DEFINE A FUNCTION TO RENDER THE ADD FORM ON CONDITION ADDING ****************/
-function renderAddBookmarkForm() {
+//*************SHOW THE ADD FORM ****************/
+const renderAddBookmarkForm = function() {
   if (store.adding) {
-    $(FORM_ADD_NEW_BOOKMARK).show();
+    $('#bookmark-add-form').show();
   } else {
-    $(FORM_ADD_NEW_BOOKMARK).hide();
+    $('#bookmark-add-form').hide();
   }
-}
+};
 
-//************* CREATE A TOGGLE METHOD TO RENDER THE ADD FORM********************************/
-$('#toggle-add-form').click(event => {
-  event.preventDefault();
-  store.adding = !store.adding;
-  renderAddBookmarkForm(); // Without this, there is nothing to call the toggle event after  initial page load.
-});
+const toggleAddBookmarkForm = function() {
+  $('#toggle-add-form').click(event => {
+    event.preventDefault();
+    store.adding = !store.adding;
+    renderAddBookmarkForm(); // Without this, there is nothing to call the toggle event after  initial page load.
+  });
+};
 
-//****CAPTURE THE INPUT VALUES AND PUSH THEM TO THE STORE************ */
+//****CAPTURE  INPUTS AND PUSH TO STORE************ */
 
 const captureNewUserInput = function() {
   $('#capture-form-values').click(event => {
@@ -57,20 +56,17 @@ const captureNewUserInput = function() {
       rating
     };
     store.bookmarks.push(newBookmark);
-    const newBookmarkElement =generateBookmarkListItem(newBookmark);
-
-    // generateStoreDom();
+    const newBookmarkElement = generateBookmarkListItem(newBookmark);
     $('.bookmark-list').append(newBookmarkElement);
   });
 };
-captureNewUserInput();
-generateStoreDom();
-
-$('.bookmark-list').html(bookmarkList);
-renderAddBookmarkForm();
 
 
-//***ON PAGE LOAD RUN RENDER** */
+
+
 $(() => {
+  renderStore();
+  captureNewUserInput();
   renderAddBookmarkForm();
+  toggleAddBookmarkForm();
 });
