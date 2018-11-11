@@ -15,6 +15,9 @@ const generateBookmarkListItem = function(bookmark) {
         Description: ${bookmark.description}
         Rating: ${bookmark.rating}
        <a href="${bookmark.url}">Visit site </a> 
+        <form id="expand-bookmark .js-expand-bookmark">
+        <button class="expand-bookmark js-expand-bookmark"name="expand">Expand</button>
+    </form>
     </li>
     `;
 };

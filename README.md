@@ -40,3 +40,5 @@ Process
     1. User can render add-bookmark-form.
     2. User can add a bookmark to list.
     3. On page load, default to a condensed view showing only title and rating.
+        a. add an 'Expand' button to open into a full display.
+        b. a listener on the button causes show/hide event for properties 'description' and 'url'
