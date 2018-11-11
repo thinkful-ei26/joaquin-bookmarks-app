@@ -11,8 +11,9 @@ const generateStoreString = function() {
 const generateBookmarkListItem = function(bookmark) {
   return `
     <li data-bookmark-id="${bookmark.id}">
-         ${bookmark.title} 
+        Title:  ${bookmark.title} 
         Description: ${bookmark.description}
+        Rating: ${bookmark.rating}
        <a href="${bookmark.url}">Visit site </a> 
     </li>
     `;
@@ -46,13 +47,13 @@ const captureNewUserInput = function() {
     event.preventDefault();
     const title = $('#title').val();
     const url = $('#url').val();
-    const desc = $('#description').val();
+    const description = $('#description').val();
     const rating = $('#rating').val();
     const newBookmark = {
       id: Math.floor(Math.random() * 100), // Dummy id.
       title,
       url,
-      desc,
+      description,
       rating
     };
     store.bookmarks.push(newBookmark);
