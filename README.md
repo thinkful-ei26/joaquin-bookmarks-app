@@ -45,4 +45,5 @@ Process
         c. got it to hide all fields...target specific click source..
         d. now make hidden state the default, with 'hidden' html attribute and removeAttr on toggle.
     4. User can remove bookmarks.
-        a. add 'delete' button to DOM, event listener triggers remove function. Remove item from store and re-render page. Use id to find and splice object from store...
+        a. add 'delete' button to DOM, event listener triggers remove function. Remove item from store and re-render page. Use id to find and splice...which means you need the index...a better way?
+        b. I have an array of objects and i need to filter one out, on id. Got that working but having trouble re-rendering the DOM accurately. It does not accurately ....i don't understand why elements are not deleting. i have a listener on click, and a function that accurately removes clicked items from the store. i then re-render with the new store, but the items don't go away.

@@ -28,10 +28,7 @@ const store = {
     }
   ],
   adding: false //additional parameter applied to overal bookmarks object element as default, used for toggling.
-
 };
-
-
 
 
 

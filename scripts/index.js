@@ -2,19 +2,26 @@
 /* global store, $  */
 
 //*****************RENDER THE STORE *****************/
-const bookmarkList = [];
+
 const generateStoreString = function() {
-  return store.bookmarks.forEach(obj =>
+  $('.js-bookmark-list').empty();
+  const bookmarkList = [];
+  store.bookmarks.forEach(obj =>
     bookmarkList.push(generateBookmarkListItem(obj))
   );
+  $('.js-bookmark-list').html(bookmarkList);
 };
 const generateBookmarkListItem = function(bookmark) {
   return `
-     <li data-bookmark-id="${bookmark.id}">
+    <li data-bookmark-id="${bookmark.id}">
       <span class="js-title">Title: ${bookmark.title}</span>
-      <span class="js-description" hidden>Description: ${bookmark.description}</span>
+      <span class="js-description" hidden>Description: ${
+        bookmark.description
+      }</span>
       <span class="js-rating">Rating: ${bookmark.rating}</span>
-      <span class="js-url" hidden> <a href="${bookmark.url}">Visit site </a></span>
+      <span class="js-url" hidden> <a href="${
+        bookmark.url
+      }">Visit site </a></span>
       <form id="expand-delete-bookmark .js-expand-delete-bookmark">
         <button class="expand-bookmark js-expand-bookmark" name="expand">
           Expand
@@ -26,11 +33,8 @@ const generateBookmarkListItem = function(bookmark) {
     </li>
     `;
 };
-const renderStore = function() {
-  $('.js-bookmark-list').html(bookmarkList);
-
-};
-generateStoreString();
+// const renderStore = function() {};
+// generateStoreString();
 
 //*************SHOW THE ADD FORM ****************/
 const renderAddBookmarkForm = function() {
@@ -48,7 +52,6 @@ const toggleAddBookmarkForm = function() {
     renderAddBookmarkForm(); // Without this, there is nothing to call the toggle event after  initial page load.
   });
 };
-
 
 //**********EXPAND VIEW**************************** */
 const toggleExpandedView = function() {
@@ -83,17 +86,44 @@ const captureNewUserInput = function() {
     };
     store.bookmarks.push(newBookmark);
     const newBookmarkElement = generateBookmarkListItem(newBookmark);
-    $('.bookmark-list').append(newBookmarkElement);
+    $('.js-bookmark-list').append(newBookmarkElement);
   });
 };
 
 /**********HANDLE DELETE BOOKMARK*************************** */
-const handleDeleteBookmark = function ()
-{
-
+// console.log('before ',store.bookmarks);
+const findAndDelete = function(id) {
+  store.bookmarks = store.bookmarks.filter(item => item.id !== id);
 };
+const handleDeleteBookmark = function() {
+  $('.js-bookmark-list').on('click', '.js-delete-bookmark', function(event) {
+    event.preventDefault();
+    //capture id of currentTarget
+    let itemId = $(this)
+      .closest('li')
+      .attr('data-bookmark-id');
+    itemId = parseInt(itemId);
+    //locate this item in store, capture index of itemId
+    // console.log('before store', store);
+    findAndDelete(itemId);
+    // console.log(itemId);
+    // console.log('after store', store);
+    // return (bookmarkList = store.bookmarks);
+    // console.log(bookmarkList);
+    // renderStore();
+  });
+};
+
+handleDeleteBookmark();
+// generateStoreString();
+
+
+
+// 
+
 $(() => {
-  renderStore();
+  // renderStore();
+  generateStoreString();
   captureNewUserInput();
   renderAddBookmarkForm();
   toggleAddBookmarkForm();
