@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>My (baby) Bookmark App</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
     <link href="index.css" rel="stylesheet" type="text/css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>My Bookmarks</h1>
     <button name="toggle-add-form" id="toggle-add-form">Make a bookmark</button>
     <form id="bookmark-add-form">
-        <label for="title" id="">Title</label>
-        <input type="text" name="title" id="title">
-        <label for="url">url</label>
-        <input type="url" name="url" id="url">
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description">
-        <label for="rating">Rate your bookmark</label>
-        <select name="rating" id="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <button name="toggle-add-form" id="capture-form-values" value="true">Add your bookmark</button>
+      <label for="title" id="">Title</label>
+      <input type="text" name="title" id="title" />
+      <label for="url">url</label> <input type="url" name="url" id="url" />
+      <label for="description">Description</label>
+      <input type="text" name="description" id="description" />
+      <label for="rating">Rate your bookmark</label>
+      <select name="rating" id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button name="toggle-add-form" id="capture-form-values" value="true">
+        Add your bookmark
+      </button>
     </form>
-   
-    <div>
-        <ul class="bookmark-list">
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-    <script src="scripts/store.js"></script>
-    <script src="scripts/index.js"></script> 
-</body>
 
+    
+
+    <section role="section">
+      <ul class="bookmark-list">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </section>
+    <script src="scripts/store.js"></script>
+    <script src="scripts/index.js"></script>
+  </body>
 </html>

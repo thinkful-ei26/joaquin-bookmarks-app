@@ -10,14 +10,16 @@ const generateStoreString = function() {
 };
 const generateBookmarkListItem = function(bookmark) {
   return `
-    <li data-bookmark-id="${bookmark.id}">
-        Title:  ${bookmark.title} 
-        Description: ${bookmark.description}
-        Rating: ${bookmark.rating}
-       <a href="${bookmark.url}">Visit site </a> 
-        <form id="expand-bookmark .js-expand-bookmark">
-        <button class="expand-bookmark js-expand-bookmark"name="expand">Expand</button>
-    </form>
+     <li data-bookmark-id="${bookmark.id}">
+      <span class="js-title">Title: ${bookmark.title}</span>
+      <span class="js-description">Description: ${bookmark.description}</span>
+      <span class="js-rating">Rating: ${bookmark.rating}</span>
+      <span class="js-url"> <a href="${bookmark.url}">Visit site </a></span>
+      <form id="expand-bookmark .js-expand-bookmark">
+        <button class="expand-bookmark js-expand-bookmark" name="expand">
+          Expand
+        </button>
+      </form>
     </li>
     `;
 };
@@ -42,6 +44,9 @@ const toggleAddBookmarkForm = function() {
     renderAddBookmarkForm(); // Without this, there is nothing to call the toggle event after  initial page load.
   });
 };
+
+//test hide fields
+$('li ')
 
 //****CAPTURE  INPUTS AND PUSH TO STORE************ */
 
