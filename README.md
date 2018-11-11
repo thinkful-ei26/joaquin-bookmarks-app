@@ -36,27 +36,4 @@ Technical Requirments
 
 Process
 
-1. Think through functionality you can extract from the projects we have done so far.
-    a. thinktube.
-    b. shopping-app
-      1. add item
-      2. delete
-      3. edit 
-      4. not the cuid thing, instead you will have API generated id's...that is modelled in the thinktube app
-
-2. Think about the modules you need and what goes in each.
-      a. API - handle the server requests, with calls to POST, GET and PATCH
-      b. Store - handles the store?
-      c. Index - use for input validation
-      d. BookmarkList - main handler functions are written here
-
-Work flow: Define a step, what I want to achieve, how that same thing was achieved in the shopping app, and replicate it. Have two separate code windows open, one with booknote one with shopping, for cross reference.
-
-1. Render the default page. => render index.html with default display.
-2. Define the store object and module. The store is a big machine that holds all of our bookmark data properties and all the methods that will be called on to manipulate the properties. Starting with
-    a. title
-    b. description
-    c. rating
-    d. an error method for invalid user inputs
-    e. a hide condition
-Wrap the store (and everything really) in an IIFE so that it and all it's methods render on page load, and repeatedly when the page is re-rendered for any user-events.
+1. 
