@@ -12,9 +12,9 @@ const generateBookmarkListItem = function(bookmark) {
   return `
      <li data-bookmark-id="${bookmark.id}">
       <span class="js-title">Title: ${bookmark.title}</span>
-      <span class="js-description">Description: ${bookmark.description}</span>
+      <span class="js-description" hidden>Description: ${bookmark.description}</span>
       <span class="js-rating">Rating: ${bookmark.rating}</span>
-      <span class="js-url"> <a href="${bookmark.url}">Visit site </a></span>
+      <span class="js-url" hidden> <a href="${bookmark.url}">Visit site </a></span>
       <form id="expand-bookmark .js-expand-bookmark">
         <button class="expand-bookmark js-expand-bookmark" name="expand">
           Expand
@@ -24,7 +24,8 @@ const generateBookmarkListItem = function(bookmark) {
     `;
 };
 const renderStore = function() {
-  $('.bookmark-list').html(bookmarkList);
+  $('.js-bookmark-list').html(bookmarkList);
+
 };
 generateStoreString();
 
@@ -46,7 +47,21 @@ const toggleAddBookmarkForm = function() {
 };
 
 //test hide fields
-$('li ')
+
+
+const toggleExpandedView = function() {
+  $('.js-bookmark-list').on('click', '.js-expand-bookmark', function(event) {
+    event.preventDefault();
+    $(this)
+      .closest('li')
+      .find('.js-description')
+      .removeAttr('hidden');
+    $(this)
+      .closest('li')
+      .find('.js-url')
+      .removeAttr('hidden');
+  });
+};
 
 //****CAPTURE  INPUTS AND PUSH TO STORE************ */
 
@@ -70,12 +85,10 @@ const captureNewUserInput = function() {
   });
 };
 
-
-
-
 $(() => {
   renderStore();
   captureNewUserInput();
   renderAddBookmarkForm();
   toggleAddBookmarkForm();
+  toggleExpandedView();
 });
