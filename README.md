@@ -43,4 +43,6 @@ Process
         a. add an 'Expand' button to open into a full display.
         b. a listener on the button causes show/hide event for properties 'description' and 'url'. how?.....
         c. got it to hide all fields...target specific click source..
-        d. now make hidden state the default, with 'hidden' html attribute and removeAttr on toggle
+        d. now make hidden state the default, with 'hidden' html attribute and removeAttr on toggle.
+    4. User can remove bookmarks.
+        a. add 'delete' button to DOM, event listener triggers remove function. Remove item from store and re-render page. Use id to find and splice object from store...

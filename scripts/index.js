@@ -15,9 +15,12 @@ const generateBookmarkListItem = function(bookmark) {
       <span class="js-description" hidden>Description: ${bookmark.description}</span>
       <span class="js-rating">Rating: ${bookmark.rating}</span>
       <span class="js-url" hidden> <a href="${bookmark.url}">Visit site </a></span>
-      <form id="expand-bookmark .js-expand-bookmark">
+      <form id="expand-delete-bookmark .js-expand-delete-bookmark">
         <button class="expand-bookmark js-expand-bookmark" name="expand">
           Expand
+        </button>
+         <button class="delete-bookmark js-delete-bookmark" name="delete">
+          Delete
         </button>
       </form>
     </li>
@@ -46,9 +49,8 @@ const toggleAddBookmarkForm = function() {
   });
 };
 
-//test hide fields
 
-
+//**********EXPAND VIEW**************************** */
 const toggleExpandedView = function() {
   $('.js-bookmark-list').on('click', '.js-expand-bookmark', function(event) {
     event.preventDefault();
@@ -63,7 +65,7 @@ const toggleExpandedView = function() {
   });
 };
 
-//****CAPTURE  INPUTS AND PUSH TO STORE************ */
+//****CAPTURE INPUTS AND PUSH TO STORE************ */
 
 const captureNewUserInput = function() {
   $('#capture-form-values').click(event => {
@@ -85,6 +87,11 @@ const captureNewUserInput = function() {
   });
 };
 
+/**********HANDLE DELETE BOOKMARK*************************** */
+const handleDeleteBookmark = function ()
+{
+
+};
 $(() => {
   renderStore();
   captureNewUserInput();
