@@ -85,8 +85,9 @@ const captureNewUserInput = function() {
       rating
     };
     store.bookmarks.push(newBookmark);
-    const newBookmarkElement = generateBookmarkListItem(newBookmark);
-    $('.js-bookmark-list').append(newBookmarkElement);
+    generateStoreString();
+    // const newBookmarkElement = generateBookmarkListItem(newBookmark);
+    // $('.js-bookmark-list').append(newBookmarkElement);
   });
 };
 
@@ -111,15 +112,14 @@ const handleDeleteBookmark = function() {
     // return (bookmarkList = store.bookmarks);
     // console.log(bookmarkList);
     // renderStore();
+    generateStoreString();
   });
 };
 
 handleDeleteBookmark();
 // generateStoreString();
 
-
-
-// 
+//
 
 $(() => {
   // renderStore();
