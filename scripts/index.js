@@ -3,7 +3,7 @@
 
 //*****************RENDER THE STORE *****************/
 
-const generateStoreString = function() {
+const renderStoreString = function() {
   $('.js-bookmark-list').empty();
   const bookmarkList = [];
   store.bookmarks.forEach(obj =>
@@ -33,8 +33,6 @@ const generateBookmarkListItem = function(bookmark) {
     </li>
     `;
 };
-// const renderStore = function() {};
-// generateStoreString();
 
 //*************SHOW THE ADD FORM ****************/
 const renderAddBookmarkForm = function() {
@@ -85,47 +83,32 @@ const captureNewUserInput = function() {
       rating
     };
     store.bookmarks.push(newBookmark);
-    generateStoreString();
-    // const newBookmarkElement = generateBookmarkListItem(newBookmark);
-    // $('.js-bookmark-list').append(newBookmarkElement);
+    renderStoreString();
   });
 };
 
 /**********HANDLE DELETE BOOKMARK*************************** */
-// console.log('before ',store.bookmarks);
 const findAndDelete = function(id) {
   store.bookmarks = store.bookmarks.filter(item => item.id !== id);
 };
 const handleDeleteBookmark = function() {
   $('.js-bookmark-list').on('click', '.js-delete-bookmark', function(event) {
     event.preventDefault();
-    //capture id of currentTarget
     let itemId = $(this)
       .closest('li')
       .attr('data-bookmark-id');
     itemId = parseInt(itemId);
-    //locate this item in store, capture index of itemId
-    // console.log('before store', store);
     findAndDelete(itemId);
-    // console.log(itemId);
-    // console.log('after store', store);
-    // return (bookmarkList = store.bookmarks);
-    // console.log(bookmarkList);
-    // renderStore();
-    generateStoreString();
+    renderStoreString();
   });
 };
 
-handleDeleteBookmark();
-// generateStoreString();
-
-//
 
 $(() => {
-  // renderStore();
-  generateStoreString();
+  renderStoreString();
   captureNewUserInput();
   renderAddBookmarkForm();
   toggleAddBookmarkForm();
   toggleExpandedView();
+  handleDeleteBookmark();
 });

@@ -47,3 +47,5 @@ Process
     4. User can remove bookmarks.
         a. add 'delete' button to DOM, event listener triggers remove function. Remove item from store and re-render page. Use id to find and splice...which means you need the index...a better way?
         b. I have an array of objects and i need to filter one out, on id. Got that working but having trouble re-rendering the DOM accurately. It does not accurately ....i don't understand why elements are not deleting. i have a listener on click, and a function that accurately removes clicked items from the store. i then re-render with the new store, but the items don't go away.
+        c. the problem was using an append method for new items, altering the DOM outside of the store. Removing items from store had no affect on DOM. Corrected so that all DOM is rendered from the current store state.
+    5. Error messages:
